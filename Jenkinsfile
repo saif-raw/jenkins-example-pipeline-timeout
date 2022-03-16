@@ -1,7 +1,7 @@
 pipeline {
   agent none
   options {
-    timeout(time: 300, unit: 'SECONDS') 
+    timeout(time: 301, unit: 'SECONDS') 
   }
   stages {
     stage('input') {
