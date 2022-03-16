@@ -1,20 +1,23 @@
 pipeline {
   agent none
+  options {
+    timeout(time: 300, unit: 'SECONDS') 
+  }
   stages {
     stage('input') {
       agent any
       input {
-        message "Organisation"
+        message "What is your first name?"
         ok "Submit"
         parameters {
-          string(defaultValue: 'Contentstack', name: 'COMPANY_NAME', trim: true) 
+          string(defaultValue: 'Dave', name: 'FIRST_NAME', trim: true) 
         }
       }
       options {
-        timeout(time: 120, unit: 'SECONDS') 
+        timeout(time: 60, unit: 'SECONDS') 
       }
       steps {
-        echo "Hello from $COMPANY_NAME"
+        echo "Good Morning, $FIRST_NAME"
         sh '''
           hostname
           cat /etc/redhat-release
